@@ -1,13 +1,84 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --accent: #f59e0b; /* yellow/orange accent */
+  --muted: #9ca3af;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero bookshelf background + dark overlay */
+.hero-bg {
+  background-image:
+    linear-gradient(180deg, rgba(15,23,42,0.8), rgba(15,23,42,0.85)),
+    url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1800&q=60');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Left sidebar rounded panel style */
+.sidebar-panel {
+  background: #fff7ed; /* pale peach */
+  color: #1f2937;
+  border-right: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Small pill button */
+.pill {
+  background: var(--accent);
+  color: white;
+}
+
+/* Horizontal scroll container */
+.h-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+}
+.h-scroll::-webkit-scrollbar { height: 10px; }
+.h-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 999px; }
+
+/* Each card snaps */
+.h-card {
+  scroll-snap-align: start;
+  flex: 0 0 180px; /* width of card on desktop */
+}
+
+/* card shadow and border mimic */
+.book-card {
+  background: white;
+  color: #111827;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(2,6,23,0.45);
+}
+
+/* small heart badge */
+.heart-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* responsive adjustments */
+@media (max-width: 768px) {
+  .h-card { flex: 0 0 140px; }
+  .hero-title { font-size: 1.6rem; }
 }
